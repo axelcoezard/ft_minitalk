@@ -6,22 +6,19 @@
 #    By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/24 21:19:06 by acoezard          #+#    #+#              #
-#    Updated: 2021/10/24 22:56:35 by acoezard         ###   ########.fr        #
+#    Updated: 2021/10/25 10:58:46 by acoezard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
-CLIBFT	= -Llibft/includes -lft
+CLIBFT	= -I libft/includes -L libft -lft
 
-%.o: %.c
-	${CC} ${CFLAGS} -c $< ${CLIBFT} -o $@
+server:
+	${CC} ${CFLAGS} ${CLIBFT} -o server ft_server.c
 
-server: ft_server.o
-	${CC} ${CFLAGS} -c ft_server.o ${CLIBFT} -o server
-
-client: ft_client.o
-	${CC} ${CFLAGS} -c ft_client.o ${CLIBFT} -o client
+client:
+	${CC} ${CFLAGS} ${CLIBFT} -o client ft_client.c
 
 all: libft server client
 
