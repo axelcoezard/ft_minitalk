@@ -6,12 +6,19 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 21:36:24 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/25 14:15:01 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:44:21 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+/**
+ * La fonction ft_send_eol envoie a un
+ * processus (via son pid) 8 signaux SIGUSR1 qui
+ * correspondent aux bits du caractere nul '\0'.
+ *
+ * \param	pid	Le pid du processus destination.
+ */
 static void	ft_send_eol(int pid)
 {
 	int		i;
@@ -25,6 +32,14 @@ static void	ft_send_eol(int pid)
 	}
 }
 
+/**
+ * La fonction ft_send_message envoie a un processus (via son pid)
+ * une chaine de caractere. Les caracteres de cette chaine sont
+ * lus bit a bit, et envoye un par un.
+ *
+ * \param	pid		Le pid du processus destination.
+ * \param	message	La chaine de caracteres a envoyer.
+ */
 static void	ft_send_message(int pid, char *message)
 {
 	char	c;
