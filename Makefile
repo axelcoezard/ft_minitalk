@@ -6,7 +6,7 @@
 #    By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/24 21:19:06 by acoezard          #+#    #+#              #
-#    Updated: 2021/10/25 14:27:45 by acoezard         ###   ########.fr        #
+#    Updated: 2021/10/25 19:22:41 by acoezard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 
 FILES =	ft_putchar_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
-		ft_atoi.c ft_isdigit.c ft_isspace.c
+		ft_atoi.c ft_isdigit.c ft_isspace.c ft_strlen.c
 SRCS =	${addprefix utils/, ${FILES}}
 OBJS =	${SRCS:.c=.o}
 

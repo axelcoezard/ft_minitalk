@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 21:05:35 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/25 14:58:20 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/25 18:47:56 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,15 @@ static void	ft_catch_signal(int sig_id, siginfo_t *info, void *context)
 	if (i == 8)
 	{
 		if (c == 0)
+		{
 			ft_putchar_fd('\n', 1);
+			kill(info->si_pid, SIGUSR1);
+		}
 		else
+		{
 			ft_putchar_fd(c, 1);
+			kill(info->si_pid, SIGUSR2);
+		}
 		i = 0;
 		c = 0;
 	}
@@ -65,5 +71,5 @@ int	main(void)
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
 		pause();
-	return (0);
+	return (EXIT_SUCCESS);
 }
