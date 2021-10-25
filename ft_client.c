@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 21:36:24 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/25 19:32:29 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/25 23:28:55 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ft_print_message(int pid, int type, int size)
 		ft_putstr_fd("Received", 1);
 	ft_putstr_fd(" message (", 1);
 	ft_putnbr_fd(size, 1);
-	ft_putstr_fd("B) to/from process ", 1);
+	ft_putstr_fd("bits) to/from process ", 1);
 	ft_putnbr_fd(pid, 1);
 	ft_putstr_fd(".\n", 1);
 }
@@ -124,7 +124,7 @@ int	main(int ac, char **av)
 	pid = ft_atoi(av[1]);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-	ft_print_message(pid, MESSAGE_SENT, ft_strlen(av[2]));
+	ft_print_message(pid, MESSAGE_SENT, (ft_strlen(av[2]) + 1) * 8);
 	ft_send_message(pid, av[2]);
 	while (1)
 		pause();
