@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 21:05:35 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/25 14:36:31 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:58:20 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ static void	ft_print_pid(int pid)
  *
  * \param	sig_id	L'id du signal recu.
  */
-static void	ft_catch_signal(int sig_id)
+static void	ft_catch_signal(int sig_id, siginfo_t *info, void *context)
 {
 	static unsigned char	c = 0;
 	static int				i = 0;
 
+	(void) context;
+	(void) info;
 	i += 1;
 	c |= sig_id == SIGUSR2;
 	if (i != 8)
@@ -54,9 +56,13 @@ static void	ft_catch_signal(int sig_id)
 
 int	main(void)
 {
+	struct sigaction	sa;
+
+	sa.sa_flags = SA_SIGINFO;
+	sa.sa_sigaction = ft_catch_signal;
 	ft_print_pid(getpid());
-	signal(SIGUSR1, ft_catch_signal);
-	signal(SIGUSR2, ft_catch_signal);
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
 		pause();
 	return (0);
