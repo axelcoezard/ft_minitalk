@@ -6,7 +6,7 @@
 #    By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/24 21:19:06 by acoezard          #+#    #+#              #
-#    Updated: 2021/10/25 14:21:54 by acoezard         ###   ########.fr        #
+#    Updated: 2021/10/25 14:27:45 by acoezard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,12 @@ OBJS =	${SRCS:.c=.o}
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-all: ${OBJS} server.o client.o
-	${CC} ${CFLAGS} -o server ${OBJS} server.o
-	${CC} ${CFLAGS} -o client ${OBJS} client.o
+all: ${OBJS} ft_server.o ft_client.o
+	${CC} ${CFLAGS} -o server ${OBJS} ft_server.o
+	${CC} ${CFLAGS} -o client ${OBJS} ft_client.o
 
 clean:
-	rm -rf ${OBJS} server.o client.o
+	rm -rf ${OBJS} ft_server.o ft_client.o
 
 fclean: clean
 	rm -rf server client
