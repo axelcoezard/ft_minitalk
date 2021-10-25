@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 21:05:35 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/25 14:18:54 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:25:52 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_print_pid(int pid)
 	ft_putchar_fd('\n', 1);
 }
 
-static void	ft_handle_signal(int sig_id)
+static void	ft_catch_signal(int sig_id)
 {
 	static unsigned char	c = 0;
 	static int				i = 0;
@@ -41,12 +41,9 @@ static void	ft_handle_signal(int sig_id)
 
 int	main(void)
 {
-	pid_t	pid;
-
-	pid = getpid();
-	ft_print_pid(pid);
-	signal(SIGUSR1, ft_handle_signal);
-	signal(SIGUSR2, ft_handle_signal);
+	ft_print_pid(getpid());
+	signal(SIGUSR1, ft_catch_signal);
+	signal(SIGUSR2, ft_catch_signal);
 	while (1)
 		pause();
 	return (0);
