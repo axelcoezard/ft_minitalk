@@ -6,7 +6,7 @@
 #    By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/05 11:42:41 by acoezard          #+#    #+#              #
-#    Updated: 2021/10/24 16:35:08 by acoezard         ###   ########.fr        #
+#    Updated: 2021/10/25 11:20:43 by acoezard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,17 +26,18 @@ COMMON_FILES =	ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 				ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c \
 				ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c \
 				ft_toupper.c ft_striteri.c \
-				ft_putunbr_fd.c ft_putunbr_base_fd.c ft_printf.c \
+				ft_putunbr_fd.c ft_putunbr_base_fd.c \
 				ft_get_next_line.c
 
-PRINTF_FILES =	ft_printf_char.c \
-				ft_printf_decimal.c \
-				ft_printf_hex.c \
-				ft_printf_integer.c \
-				ft_printf_percent.c \
-				ft_printf_ptr.c \
-				ft_printf_string.c \
-				ft_printf_udecimal.c
+PRINTF_FILES =	ft_printf.c \
+				ft_printf/ft_printf_char.c \
+				ft_printf/ft_printf_decimal.c \
+				ft_printf/ft_printf_hex.c \
+				ft_printf/ft_printf_integer.c \
+				ft_printf/ft_printf_percent.c \
+				ft_printf/ft_printf_ptr.c \
+				ft_printf/ft_printf_string.c \
+				ft_printf/ft_printf_udecimal.c
 
 LIST_FILES =	ft_list_create.c \
 				ft_list_add_front.c \
@@ -52,7 +53,7 @@ MATH_FILES =	ft_abs.c ft_exp.c ft_max.c \
 				ft_min.c ft_pow.c ft_sqrt.c
 
 COMMON_SRCS = $(addprefix ${SOURCES}/, ${COMMON_FILES})
-PRINTF_SRCS = $(addprefix ${SOURCES}/ft_printf/, ${PRINTF_FILES})
+PRINTF_SRCS = $(addprefix ${SOURCES}/, ${PRINTF_FILES})
 LIST_SRCS = $(addprefix ${SOURCES}/ft_list/, ${LIST_FILES})
 MATH_SRCS = $(addprefix ${SOURCES}/ft_math/, ${MATH_FILES})
 

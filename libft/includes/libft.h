@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 16:16:06 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/24 16:32:33 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/25 11:15:10 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putunbr_fd(unsigned int nbr, int fd);
 void	ft_putunbr_base_fd(unsigned long nbr, char *base, int fd);
 
-# include "ft_list.h"
 # include "ft_printf.h"
+# include "ft_list.h"
 # include "ft_math.h"
 
 int		ft_isalnum(int c);
