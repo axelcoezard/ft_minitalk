@@ -6,33 +6,30 @@
 #    By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/24 21:19:06 by acoezard          #+#    #+#              #
-#    Updated: 2021/10/25 11:19:31 by acoezard         ###   ########.fr        #
+#    Updated: 2021/10/25 14:18:54 by acoezard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
-CLIBFT	= -I libft/includes -L libft -lft
 
-server: ft_server.c
-	${CC} ${CFLAGS} ${CLIBFT} -o server ft_server.c
+SRCS =	ft_putchar_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
+		ft_atoi.c ft_isdigit.c ft_isspace.c
+OBJS = ${SRCS:.c=.o}
 
-client: ft_client.c
-	${CC} ${CFLAGS} ${CLIBFT} -o client ft_client.c
+.c.o:
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-libft:
-	@make -C ./libft
-
-all: libft server client
+all: ${OBJS} server.o client.o
+	${CC} ${CFLAGS} -o server ${OBJS} server.o
+	${CC} ${CFLAGS} -o client ${OBJS} client.o
 
 clean:
-	@make -C ./libft clean
-	rm -rf ft_server.o ft_client.o
+	rm -rf ${OBJS} server.o client.o
 
 fclean: clean
-	@make -C ./libft fclean
 	rm -rf server client
 
 re: fclean all
 
-.PHONY: all libft server client clean fclean re
+.PHONY: all clean fclean re

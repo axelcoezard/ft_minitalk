@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_islower.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/06 16:18:27 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/23 17:18:37 by acoezard         ###   ########.fr       */
+/*   Created: 2021/10/05 12:17:29 by acoezard          #+#    #+#             */
+/*   Updated: 2021/10/25 14:03:10 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "minitalk.h"
 
-/**
- * La fonction ft_islower() vérifie que c
- * est un caractère minuscule.
- *
- * \param	c	Un caractère non-signé.
- * \return		Un entier à valeur booléenne.
- */
-int	ft_islower(int c)
+void	ft_putchar_fd(char c, int fd)
 {
-	return (c >= 'a' && c <= 'z');
+	write(fd, &c, 1);
 }

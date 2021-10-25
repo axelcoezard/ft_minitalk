@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 21:36:24 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/25 13:52:38 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:15:01 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_send_eol(int pid)
 static void	ft_send_message(int pid, char *message)
 {
 	char	c;
-	int 	i;
+	int		i;
 
 	while (*message)
 	{
@@ -48,8 +48,7 @@ static void	ft_send_message(int pid, char *message)
 	ft_send_eol(pid);
 }
 
-
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (ac != 3)
 		ft_putstr_fd("usage: ./client [server-pid] [message]\n", 1);

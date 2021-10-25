@@ -1,6 +1,6 @@
-.vscode/
+*.o
 
-libft.a
+.vscode/
 
 server
 client

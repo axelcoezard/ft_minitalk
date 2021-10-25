@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_add_back.c                                 :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 15:43:24 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/23 16:41:07 by acoezard         ###   ########.fr       */
+/*   Created: 2021/10/06 11:09:12 by acoezard          #+#    #+#             */
+/*   Updated: 2021/10/25 14:03:22 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "minitalk.h"
 
-void	ft_list_add_back(t_list **alst, void *content)
+static void	ft_putnbr_fd_recursive(long nbr, int fd)
 {
-	t_list	*last;
-	t_list	*new;
-
-	if (alst != NULL)
+	if (nbr > 0)
 	{
-		new = ft_list_create(content);
-		if (*alst == NULL)
-			*alst = new;
-		else
-		{
-			last = ft_list_last(*alst);
-			last->next = new;
-		}
+		ft_putnbr_fd_recursive(nbr / 10, fd);
+		ft_putchar_fd(nbr % 10 + '0', fd);
 	}
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	long	nbr;
+
+	nbr = n;
+	if (nbr < 0)
+	{
+		ft_putchar_fd('-', fd);
+		nbr *= -1;
+	}
+	if (nbr == 0)
+		ft_putchar_fd(nbr + '0', fd);
+	else
+		ft_putnbr_fd_recursive(nbr, fd);
 }

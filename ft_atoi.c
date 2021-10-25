@@ -6,11 +6,11 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:28:27 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/23 17:18:37 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:06:56 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "minitalk.h"
 
 static int	ft_atoi_overflow(int sign)
 {

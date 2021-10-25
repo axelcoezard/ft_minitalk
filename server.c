@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_server.c                                        :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 21:05:35 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/25 13:51:27 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/25 14:18:54 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ft_handle_signal(int sig_id)
 	static unsigned char	c = 0;
 	static int				i = 0;
 
-	i = i + 1;
+	i += 1;
 	c |= sig_id == SIGUSR2;
 	if (i != 8)
 		c <<= 1;
@@ -41,8 +41,9 @@ static void	ft_handle_signal(int sig_id)
 
 int	main(void)
 {
-	pid_t pid = getpid();
+	pid_t	pid;
 
+	pid = getpid();
 	ft_print_pid(pid);
 	signal(SIGUSR1, ft_handle_signal);
 	signal(SIGUSR2, ft_handle_signal);
