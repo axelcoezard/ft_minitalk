@@ -6,7 +6,7 @@
 #    By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/24 21:19:06 by acoezard          #+#    #+#              #
-#    Updated: 2021/10/27 18:37:40 by acoezard         ###   ########.fr        #
+#    Updated: 2021/10/27 18:39:45 by acoezard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ all: ${OBJS} ${OBJECTS}/server.o ${OBJECTS}/client.o
 
 clean:
 	@echo ${GREEN}"● Supression des fichiers binaires (.o)..."$(EOC)
-	@rm -rf ${OBJS} ${OBJECTS}/ft_server.o ${OBJECTS}/ft_client.o
+	@rm -rf ${OBJECTS}
 
 fclean: clean
 	@echo ${GREEN}"● Supression des executables et librairies..."$(EOC)
