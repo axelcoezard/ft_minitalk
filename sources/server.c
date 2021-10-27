@@ -6,11 +6,11 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 21:05:35 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/25 23:29:54 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/27 18:28:01 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../includes/minitalk.h"
 
 /**
  * Affiche sur la sortie standard le pid passe

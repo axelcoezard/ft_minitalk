@@ -6,11 +6,11 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 21:36:24 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/25 23:31:42 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/27 18:28:01 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../includes/minitalk.h"
 
 /**
  * La fonction ft_print_message permet d'ecrire

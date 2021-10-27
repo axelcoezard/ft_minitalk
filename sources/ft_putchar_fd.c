@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/06 16:29:31 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/25 19:23:40 by acoezard         ###   ########.fr       */
+/*   Created: 2021/10/05 12:17:29 by acoezard          #+#    #+#             */
+/*   Updated: 2021/10/27 18:28:01 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minitalk.h"
+#include "../includes/minitalk.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t	len;
-
-	len = 0;
-	while (*s != '\0')
-	{
-		s++;
-		len++;
-	}
-	return (len);
+	write(fd, &c, 1);
 }
