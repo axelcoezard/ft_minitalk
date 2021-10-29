@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 21:36:24 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/29 14:03:12 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/29 14:36:56 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
  */
 static void	ft_receive_message(int sig_id)
 {
-	if (sig_id == SIGUSR1)
-		exit(EXIT_SUCCESS);
+	(void) sig_id;
 }
 
 /**
@@ -31,18 +30,17 @@ static void	ft_receive_message(int sig_id)
  * \param	pid	Le pid du server cible.
  * \param	c	Le caractere a envoyer.
  */
-static void	ft_send_char(int pid, char c)
+static void	ft_send_char(int pid, unsigned char c)
 {
 	int		i;
 
-	i = 7;
-	while (i > -1)
+	i = 8;
+	while (i--)
 	{
 		if (c >> i & 1)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		i--;
 		pause();
 		usleep(200);
 	}
@@ -60,10 +58,11 @@ static void	ft_send_message(int pid, char *message)
 {
 	while (*message)
 	{
-		ft_send_char(pid, *message);
+		ft_send_char(pid, (unsigned char) *message);
 		message++;
 	}
 	ft_send_char(pid, '\n');
+	ft_send_char(pid, '\0');
 }
 
 static int	ft_verify_pid(int pid)
@@ -71,14 +70,12 @@ static int	ft_verify_pid(int pid)
 	int	i;
 
 	i = 8;
-	while (kill(pid, SIGUSR1) == 0 && i--)
+	while (i-- && kill(pid, SIGUSR1) == 0)
 	{
 		pause();
 		usleep(200);
 	}
-	if (i != -1)
-		return (0);
-	return (1);
+	return (i == -1);
 }
 
 int	main(int ac, char **av)
@@ -91,7 +88,6 @@ int	main(int ac, char **av)
 		return (EXIT_ERROR);
 	}
 	pid = ft_atoi(av[1]);
-	signal(SIGUSR1, ft_receive_message);
 	signal(SIGUSR2, ft_receive_message);
 	if (!ft_verify_pid(pid))
 	{

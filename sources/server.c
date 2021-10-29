@@ -6,7 +6,7 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 21:05:35 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/29 13:50:51 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/29 14:28:40 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ static void	ft_print_pid(int pid)
  */
 static void	ft_catch_signal(int sig_id, siginfo_t *info, void *context)
 {
-	static unsigned char	c = 0;
-	static int				i = 0;
+	static unsigned char	c;
+	static int				i;
 
 	(void) context;
 	i += 1;
 	c |= sig_id == SIGUSR2;
-	if (i != 8)
+	if (i < 8)
 		c <<= 1;
 	if (i == 8)
 	{
-		ft_putchar_fd(c, 1);
+		write(1, &c, 1);
 		i = 0;
 		c = 0;
 	}
