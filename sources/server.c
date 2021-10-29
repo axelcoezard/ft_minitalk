@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_server.c                                        :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 21:05:35 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/27 18:28:01 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/29 13:01:21 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,13 @@ static void	ft_catch_signal(int sig_id, siginfo_t *info, void *context)
 	if (i == 8)
 	{
 		if (c == 0)
-		{
 			ft_putchar_fd('\n', 1);
-			kill(info->si_pid, SIGUSR1);
-		}
 		else
 			ft_putchar_fd(c, 1);
 		i = 0;
 		c = 0;
 	}
+	usleep(200);
 	kill(info->si_pid, SIGUSR2);
 }
 
