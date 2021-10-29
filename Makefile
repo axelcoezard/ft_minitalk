@@ -6,7 +6,7 @@
 #    By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/24 21:19:06 by acoezard          #+#    #+#              #
-#    Updated: 2021/10/29 13:26:25 by acoezard         ###   ########.fr        #
+#    Updated: 2021/10/29 14:02:22 by acoezard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ ${OBJECTS}/%.o: ${SOURCES}/%.c
 	@echo "● Compilation de "$(BLUE)"${notdir $<}"$(EOC)"."
 	@${CC} ${CFLAGS} -o $@ -c $< ${CINCLUDES}
 
+all: server client
+
 server: ${OBJS} ${OBJECTS}/server.o
 	@echo $(GREEN)"● Compilation du server..."$(EOC)
 	@${CC} ${CFLAGS} ${CINCLUDES} -o server ${OBJS} ${OBJECTS}/server.o
@@ -49,7 +51,7 @@ client: ${OBJS} ${OBJECTS}/client.o
 	@echo $(GREEN)"● Compilation du client..."$(EOC)
 	@${CC} ${CFLAGS} ${CINCLUDES} -o client ${OBJS} ${OBJECTS}/client.o
 
-all: server client
+bonus: server_bonus client_bonus
 
 server_bonus: ${OBJS} ${OBJECTS}/server_bonus.o
 	@echo $(GREEN)"● Compilation du server (bonus)..."$(EOC)
@@ -58,8 +60,6 @@ server_bonus: ${OBJS} ${OBJECTS}/server_bonus.o
 client_bonus: ${OBJS} ${OBJECTS}/client_bonus.o
 	@echo $(GREEN)"● Compilation du client (bonus)..."$(EOC)
 	@${CC} ${CFLAGS} ${CINCLUDES} -o client ${OBJS} ${OBJECTS}/client_bonus.o
-
-bonus: server_bonus client_bonus
 
 clean:
 	@echo ${GREEN}"● Supression des fichiers binaires (.o)..."$(EOC)
@@ -71,4 +71,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

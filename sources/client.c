@@ -6,15 +6,15 @@
 /*   By: acoezard <acoezard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 21:36:24 by acoezard          #+#    #+#             */
-/*   Updated: 2021/10/29 13:51:01 by acoezard         ###   ########.fr       */
+/*   Updated: 2021/10/29 14:03:12 by acoezard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
 /**
- * La fonction ft_receive_message permet de fermer le programme a la reception
- * d'un signal SIGUSR1.
+ * La fonction ft_receive_message permet de fermer le programme
+ * a la reception d'un signal SIGUSR1.
  *
  * \param	sig_id	id du signal
  */
